@@ -21,8 +21,13 @@ export default function Header() {
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
           <a href="#hero" className="flex items-center gap-3 group">
-            <div className="w-12 h-12 bg-gradient-hero rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:shadow-glow transition-all duration-300">
-              BS
+            <div className="relative w-12 h-12 rounded-xl overflow-hidden shadow-lg group-hover:shadow-glow transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-hero animate-pulse"></div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
             </div>
             <div className="hidden sm:block">
               <div className="font-extrabold text-xl text-foreground">Betterment Shymalla</div>

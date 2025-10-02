@@ -14,6 +14,7 @@ export default function DonateModal({ isOpen, onClose }: DonateModalProps) {
   const [customAmount, setCustomAmount] = useState("");
   const [paymentMethod, setPaymentMethod] = useState<"mpesa" | "card" | "paypal">("mpesa");
   const [copied, setCopied] = useState(false);
+  const [userPhone, setUserPhone] = useState("");
 
   const mpesaNumber = "+254721725958";
   const amounts = [500, 1000, 2500, 5000];
@@ -61,6 +62,18 @@ export default function DonateModal({ isOpen, onClose }: DonateModalProps) {
               </div>
 
               <div className="space-y-6">
+                <div>
+                  <label className="block text-sm font-semibold text-foreground mb-2">Your Phone Number</label>
+                  <Input
+                    type="tel"
+                    placeholder="+254 7XX XXX XXX"
+                    value={userPhone}
+                    onChange={(e) => setUserPhone(e.target.value)}
+                    className="h-12"
+                  />
+                  <p className="text-xs text-muted-foreground mt-1">We'll use this for receipt confirmation</p>
+                </div>
+
                 <div>
                   <label className="block text-sm font-semibold text-foreground mb-3">Select Amount (KES)</label>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">

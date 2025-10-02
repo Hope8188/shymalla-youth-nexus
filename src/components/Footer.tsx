@@ -35,8 +35,13 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-gradient-hero rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                BS
+              <div className="relative w-12 h-12 rounded-xl overflow-hidden shadow-lg">
+                <div className="absolute inset-0 bg-gradient-hero"></div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
               </div>
               <div>
                 <div className="font-extrabold text-lg text-foreground">Betterment Shymalla</div>
