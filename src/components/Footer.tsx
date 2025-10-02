@@ -46,6 +46,11 @@ export default function Footer() {
             <p className="text-sm text-muted-foreground leading-relaxed">
               Empowering Kenyan youth through health awareness, mental wellness, and entrepreneurship programs.
             </p>
+            <div className="text-xs text-muted-foreground space-y-1">
+              <p>Email: bettermentshymalla@gmail.com</p>
+              <p>Phone: +254 743 481 715 / +254 721 725 958</p>
+              <p className="italic font-semibold text-primary">Always In My Prime</p>
+            </div>
             <div className="flex gap-3">
               {socialLinks.map((social) => {
                 const Icon = social.icon;

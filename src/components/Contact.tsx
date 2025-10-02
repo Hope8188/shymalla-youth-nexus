@@ -9,14 +9,14 @@ export default function Contact() {
     {
       icon: Mail,
       label: "Email",
-      value: "hello@bettermentshymalla.org",
+      value: "bettermentshymalla@gmail.com",
       color: "text-primary",
       bg: "bg-primary/10",
     },
     {
       icon: Phone,
       label: "Phone",
-      value: "+254 700 000 000",
+      value: "+254 743 481 715 / +254 721 725 958",
       color: "text-secondary",
       bg: "bg-secondary/10",
     },
