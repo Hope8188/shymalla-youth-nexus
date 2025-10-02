@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CreditCard, Smartphone, DollarSign, Heart } from "lucide-react";
+import DonateModal from "./DonateModal";
 
 export default function Donate() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const paymentMethods = [
     {
       icon: Smartphone,
@@ -147,8 +150,11 @@ export default function Donate() {
                 </select>
               </div>
 
-              <Button className="w-full h-12 bg-primary hover:bg-primary-light text-primary-foreground font-bold text-lg shadow-lg hover:shadow-glow transition-all">
-                Proceed to Payment
+              <Button
+                onClick={() => setIsModalOpen(true)}
+                className="w-full h-12 bg-primary hover:bg-primary-light text-primary-foreground font-bold text-lg shadow-lg hover:shadow-glow transition-all"
+              >
+                Donate Now
               </Button>
 
               <p className="text-xs text-muted-foreground text-center pt-2">
@@ -158,6 +164,8 @@ export default function Donate() {
           </motion.div>
         </div>
       </div>
+
+      <DonateModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 }

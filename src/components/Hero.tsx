@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Users, Heart, TrendingUp, Sparkles } from "lucide-react";
 import heroImage from "@/assets/hero-main.jpg";
+import DonateModal from "./DonateModal";
 
 export default function Hero() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const impactStats = [
     { icon: Users, label: "Youth Reached", value: "18,432+", color: "text-primary" },
     { icon: Heart, label: "Health Drives", value: "134", color: "text-secondary" },
@@ -12,8 +15,51 @@ export default function Hero() {
   ];
 
   return (
-    <section id="hero" className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-background via-primary/5 to-secondary/5">
-      <div className="container mx-auto px-4 lg:px-8 py-12 lg:py-20">
+    <section id="hero" className="relative min-h-[90vh] flex items-center overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-teal-500/20 via-cyan-400/10 to-orange-400/20">
+        <div className="absolute inset-0 opacity-50">
+          <motion.div
+            className="absolute top-1/4 left-1/4 w-96 h-96 bg-teal-500/30 rounded-full blur-3xl"
+            animate={{
+              x: [0, 100, 0],
+              y: [0, -100, 0],
+              scale: [1, 1.2, 1],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute top-1/2 right-1/4 w-96 h-96 bg-cyan-400/30 rounded-full blur-3xl"
+            animate={{
+              x: [0, -100, 0],
+              y: [0, 100, 0],
+              scale: [1, 1.3, 1],
+            }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute bottom-1/4 left-1/2 w-96 h-96 bg-orange-400/30 rounded-full blur-3xl"
+            animate={{
+              x: [0, -80, 0],
+              y: [0, -80, 0],
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 22,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        </div>
+      </div>
+      <div className="container mx-auto px-4 lg:px-8 py-12 lg:py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Content */}
           <motion.div
@@ -62,8 +108,13 @@ export default function Hero() {
                   Join Us <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
                 </a>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold">
-                <a href="#donate">Support Our Work</a>
+              <Button
+                onClick={() => setIsModalOpen(true)}
+                size="lg"
+                variant="outline"
+                className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold"
+              >
+                Donate Now
               </Button>
               <Button asChild size="lg" className="bg-secondary hover:bg-secondary-light text-secondary-foreground font-semibold">
                 <a href="#partner">Partner With Us</a>
@@ -134,6 +185,8 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
+
+      <DonateModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 }
