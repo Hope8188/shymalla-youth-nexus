@@ -2,12 +2,12 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 const SuccessStories = () => {
-  const stories = [
+const stories = [
     {
       name: "Grace Wanjiku",
       age: 22,
       location: "Nairobi",
-      photo: "/placeholder.svg",
+      photo: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200&q=80",
       quote: "The entrepreneurship bootcamp gave me the skills and confidence to start my own salon. Now I employ three other young people from my community.",
       before: "Unemployed",
       after: "Business Owner",
@@ -17,7 +17,7 @@ const SuccessStories = () => {
       name: "David Omondi",
       age: 19,
       location: "Kisumu",
-      photo: "/placeholder.svg",
+      photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80",
       quote: "Mental wellness sessions helped me overcome anxiety and depression. I learned I wasn't alone and found peer support that changed my life.",
       before: "Struggling with anxiety",
       after: "Peer counselor",
@@ -27,7 +27,7 @@ const SuccessStories = () => {
       name: "Faith Akinyi",
       age: 24,
       location: "Mombasa",
-      photo: "/placeholder.svg",
+      photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80",
       quote: "Free health screenings caught my condition early. The referral system connected me to treatment I couldn't afford. I'm healthy and working today.",
       before: "Undiagnosed condition",
       after: "Healthy & employed",

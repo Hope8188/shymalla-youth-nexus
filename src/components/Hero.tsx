@@ -2,8 +2,9 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Users, Heart, TrendingUp, Sparkles } from "lucide-react";
-import heroImage from "@/assets/hero-main.jpg";
 import DonateModal from "./DonateModal";
+
+const heroImage = "https://images.unsplash.com/photo-1529390079861-591f7fc67d90?w=1200&q=80";
 
 export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);

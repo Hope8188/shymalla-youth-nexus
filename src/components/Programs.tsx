@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { Heart, Brain, TrendingUp } from "lucide-react";
-import healthImage from "@/assets/programs-health.jpg";
-import wellnessImage from "@/assets/programs-wellness.jpg";
-import entrepreneurshipImage from "@/assets/programs-entrepreneurship.jpg";
+
+const healthImage = "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80";
+const wellnessImage = "https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=800&q=80";
+const entrepreneurshipImage = "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=80";
 
 export default function Programs() {
   const programs = [
