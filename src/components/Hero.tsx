@@ -87,12 +87,12 @@ export default function Hero() {
               </h1>
 
               <p className="text-xl md:text-2xl text-muted-foreground font-medium">
-                Empowering Kenyan youth to thrive — physically, mentally, and economically.
+                Empowering Kenyan youth to thrive physically, mentally, and economically.
               </p>
 
               <p className="text-lg text-foreground/80 max-w-2xl">
                 We run health awareness drives, mental wellness programs, lifestyle-change campaigns,
-                and entrepreneurship support — led by youth, for youth.
+                and entrepreneurship support. Led by youth, for youth.
               </p>
             </div>
 

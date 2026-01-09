@@ -6,7 +6,7 @@ export default function Events() {
   const events = [
     {
       id: 1,
-      title: "Community Health Caravan — Nairobi",
+      title: "Community Health Caravan - Nairobi",
       date: "Nov 15, 2025",
       location: "Nairobi CBD",
       attendees: "500+ expected",
