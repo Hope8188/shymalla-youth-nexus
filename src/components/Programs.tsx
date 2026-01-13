@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Heart, Brain, TrendingUp } from "lucide-react";
+import { Heart, Brain, TrendingUp, ArrowRight } from "lucide-react";
 import healthImage from "@/assets/programs-health.jpg";
 import wellnessImage from "@/assets/programs-wellness.jpg";
 import entrepreneurshipImage from "@/assets/programs-entrepreneurship.jpg";
@@ -8,33 +8,36 @@ export default function Programs() {
   const programs = [
     {
       title: "Health Awareness",
-      description: "Campaigns, screenings, vaccination drives, and partnerships with local clinics to ensure youth have access to essential healthcare.",
+      description:
+        "Free health screenings, vaccination drives, and health education campaigns reaching youth in underserved communities.",
       icon: Heart,
       image: healthImage,
-      color: "from-primary to-primary-light",
-      stats: ["134 Health Drives", "18K+ Youth Reached"],
+      stats: "18,000+ youth reached",
+      color: "bg-primary",
     },
     {
       title: "Mental Wellness",
-      description: "Peer support groups, counseling referrals, and digital resources for stress, anxiety, and mental health challenges.",
+      description:
+        "Peer counseling, support groups, and mental health resources helping young people navigate life's challenges.",
       icon: Brain,
       image: wellnessImage,
-      color: "from-secondary to-secondary-light",
-      stats: ["1,024 Sessions", "24/7 Support Line"],
+      stats: "1,024 sessions delivered",
+      color: "bg-secondary",
     },
     {
       title: "Youth Entrepreneurship",
-      description: "Bootcamps, microgrants, mentorship, and market access for young founders building sustainable businesses.",
+      description:
+        "Business training, microgrants, and mentorship empowering young entrepreneurs to build sustainable businesses.",
       icon: TrendingUp,
       image: entrepreneurshipImage,
-      color: "from-accent to-orange-400",
-      stats: ["560 Businesses", "KES 12M+ Funded"],
+      stats: "560 businesses supported",
+      color: "bg-accent",
     },
   ];
 
   return (
-    <section id="programs" className="py-20 lg:py-32 bg-background">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section id="programs" className="section-padding bg-muted/30">
+      <div className="container-wide">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -42,62 +45,62 @@ export default function Programs() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-extrabold text-foreground mb-4">
-            Programs & Impact
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Focused, evidence-backed programs that reach youth where they are and create lasting change.
+          <span className="text-primary font-semibold text-sm uppercase tracking-widest">
+            What We Do
+          </span>
+          <h2 className="text-headline text-foreground mt-4 mb-4">Our Programs</h2>
+          <p className="text-body-lg max-w-2xl mx-auto">
+            Three pillars of support designed to address the holistic needs of young people.
           </p>
         </motion.div>
 
         {/* Programs Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-8">
           {programs.map((program, index) => {
             const Icon = program.icon;
             return (
-              <motion.div
+              <motion.article
                 key={program.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group"
+                transition={{ delay: index * 0.15 }}
+                className="group bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all"
               >
-                <div className="bg-card border border-border rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 h-full flex flex-col">
-                  {/* Image */}
-                  <div className="relative h-56 overflow-hidden">
-                    <img
-                      src={program.image}
-                      alt={program.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className={`absolute inset-0 bg-gradient-to-t ${program.color} opacity-40 group-hover:opacity-30 transition-opacity`} />
-                    <div className="absolute top-4 left-4 w-14 h-14 bg-white/95 rounded-2xl flex items-center justify-center shadow-lg">
-                      <Icon className={`bg-gradient-to-br ${program.color} bg-clip-text text-transparent`} size={28} strokeWidth={2.5} />
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-6 flex-1 flex flex-col">
-                    <h3 className="text-2xl font-bold text-foreground mb-3">{program.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed mb-4 flex-1">
-                      {program.description}
-                    </p>
-
-                    {/* Stats */}
-                    <div className="flex gap-2 flex-wrap">
-                      {program.stats.map((stat) => (
-                        <span
-                          key={stat}
-                          className={`px-3 py-1 bg-gradient-to-r ${program.color} text-white text-xs font-semibold rounded-full`}
-                        >
-                          {stat}
-                        </span>
-                      ))}
-                    </div>
+                {/* Image */}
+                <div className="relative h-56 overflow-hidden">
+                  <img
+                    src={program.image}
+                    alt={program.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div
+                    className={`absolute bottom-4 left-4 ${program.color} text-white px-4 py-1.5 rounded-full text-sm font-medium`}
+                  >
+                    {program.stats}
                   </div>
                 </div>
-              </motion.div>
+
+                {/* Content */}
+                <div className="p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className={`${program.color} p-2 rounded-lg`}>
+                      <Icon className="text-white" size={20} />
+                    </div>
+                    <h3 className="text-xl font-bold text-foreground">
+                      {program.title}
+                    </h3>
+                  </div>
+                  <p className="text-muted-foreground mb-4">{program.description}</p>
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center gap-2 text-primary font-semibold text-sm group-hover:gap-3 transition-all"
+                  >
+                    Learn more <ArrowRight size={16} />
+                  </a>
+                </div>
+              </motion.article>
             );
           })}
         </div>
