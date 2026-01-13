@@ -2,50 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Mental Health Awareness color palette - inspired by WHO/UN mental health campaigns */
-/* Primary: Lime Green (mental health ribbon), Secondary: Sunshine Yellow, Accent: Soft Teal */
+/* Modern minimalist design system inspired by charity: water, UNICEF, The Water Project */
 
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 160 10% 10%;
+    --foreground: 0 0% 8%;
 
     --card: 0 0% 100%;
-    --card-foreground: 160 10% 10%;
+    --card-foreground: 0 0% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 160 10% 10%;
+    --popover-foreground: 0 0% 8%;
 
-    /* Lime Green - mental health awareness ribbon color */
-    --primary: 90 65% 45%;
+    /* Deep blue - trust, stability */
+    --primary: 210 100% 35%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 90 60% 55%;
-    --primary-glow: 90 55% 65%;
+    --primary-light: 210 90% 45%;
+    --primary-glow: 210 85% 55%;
 
-    /* Sunshine Yellow - hope, optimism */
-    --secondary: 48 95% 55%;
-    --secondary-foreground: 160 10% 10%;
-    --secondary-light: 48 90% 65%;
+    /* Warm gold - hope, energy */
+    --secondary: 42 95% 55%;
+    --secondary-foreground: 0 0% 8%;
+    --secondary-light: 42 90% 65%;
 
-    /* Soft Teal - calm, healing */
-    --accent: 170 50% 45%;
+    /* Coral accent - urgency, action */
+    --accent: 12 85% 55%;
     --accent-foreground: 0 0% 100%;
 
-    --muted: 90 20% 96%;
-    --muted-foreground: 160 10% 45%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 210 10% 45%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 90 15% 90%;
-    --input: 90 15% 90%;
-    --ring: 90 65% 45%;
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 210 100% 35%;
 
     --radius: 0.5rem;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(90 65% 45%), hsl(90 55% 55%));
-    --gradient-warm: linear-gradient(135deg, hsl(48 95% 55%), hsl(40 90% 60%));
+    --gradient-hero: linear-gradient(135deg, hsl(210 100% 35%), hsl(210 85% 55%));
+    --gradient-warm: linear-gradient(135deg, hsl(42 95% 55%), hsl(12 85% 55%));
     --gradient-overlay: linear-gradient(180deg, transparent 0%, hsl(0 0% 0% / 0.7) 100%);
 
     /* Shadows */
@@ -53,7 +52,7 @@
     --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.1);
     --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.1);
     --shadow-xl: 0 20px 25px -5px hsl(0 0% 0% / 0.1);
-    --shadow-glow: 0 0 40px hsl(90 65% 45% / 0.2);
+    --shadow-glow: 0 0 40px hsl(210 100% 35% / 0.2);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -66,36 +65,36 @@
   }
 
   .dark {
-    --background: 160 15% 8%;
+    --background: 210 25% 8%;
     --foreground: 0 0% 98%;
 
-    --card: 160 15% 12%;
+    --card: 210 25% 12%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 160 15% 12%;
+    --popover: 210 25% 12%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 90 60% 50%;
+    --primary: 210 90% 55%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 90 55% 60%;
-    --primary-glow: 90 50% 70%;
+    --primary-light: 210 85% 65%;
+    --primary-glow: 210 80% 70%;
 
-    --secondary: 48 90% 60%;
-    --secondary-foreground: 160 10% 10%;
-    --secondary-light: 48 85% 70%;
+    --secondary: 42 90% 60%;
+    --secondary-foreground: 0 0% 8%;
+    --secondary-light: 42 85% 70%;
 
-    --accent: 170 45% 50%;
+    --accent: 12 80% 60%;
     --accent-foreground: 0 0% 100%;
 
-    --muted: 160 15% 18%;
-    --muted-foreground: 160 10% 60%;
+    --muted: 210 20% 18%;
+    --muted-foreground: 210 10% 60%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 160 15% 20%;
-    --input: 160 15% 20%;
-    --ring: 90 60% 50%;
+    --border: 210 20% 20%;
+    --input: 210 20% 20%;
+    --ring: 210 90% 55%;
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -146,5 +145,23 @@
 
   .text-body-lg {
     @apply text-lg md:text-xl text-muted-foreground leading-relaxed;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary-light 
+           px-8 py-4 rounded-full font-semibold text-base
+           transition-all duration-300 hover:shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary-light 
+           px-8 py-4 rounded-full font-semibold text-base
+           transition-all duration-300 hover:shadow-lg;
+  }
+
+  .btn-outline {
+    @apply border-2 border-foreground text-foreground hover:bg-foreground hover:text-background
+           px-8 py-4 rounded-full font-semibold text-base
+           transition-all duration-300;
   }
 }
