@@ -1,166 +1,105 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { CreditCard, Smartphone, DollarSign, Heart } from "lucide-react";
+import { Check } from "lucide-react";
 import DonateModal from "./DonateModal";
 
 export default function Donate() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const paymentMethods = [
-    {
-      icon: Smartphone,
-      name: "M-Pesa",
-      description: "Pay via Paybill or Till Number using your mobile phone",
-      color: "text-primary",
-      bg: "bg-primary/10",
-    },
-    {
-      icon: CreditCard,
-      name: "Card Payment",
-      description: "Secure payment via Stripe - all major cards accepted",
-      color: "text-secondary",
-      bg: "bg-secondary/10",
-    },
-    {
-      icon: DollarSign,
-      name: "PayPal",
-      description: "International donors can use PayPal for easy donations",
-      color: "text-accent",
-      bg: "bg-accent/10",
-    },
+  const [selectedAmount, setSelectedAmount] = useState<number | null>(2500);
+
+  const amounts = [500, 1000, 2500, 5000];
+
+  const impactItems = [
+    { amount: 500, impact: "Mental health resources for 5 youth" },
+    { amount: 1000, impact: "Health screening for 4 people" },
+    { amount: 2500, impact: "Complete health drive for 10 youth" },
+    { amount: 5000, impact: "Microgrant for an aspiring entrepreneur" },
   ];
 
-  const amounts = ["KES 500", "KES 1,000", "KES 2,500", "KES 5,000"];
-
   return (
-    <section id="donate" className="py-20 lg:py-32 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+    <section id="donate" className="section-padding bg-primary text-primary-foreground">
+      <div className="container-tight">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            className="space-y-6"
           >
-            <div>
-              <div className="inline-block p-3 bg-primary/10 rounded-2xl mb-4">
-                <Heart className="text-primary" size={32} />
-              </div>
-              <h2 className="text-4xl lg:text-5xl font-extrabold text-foreground mb-4">
-                Support the Movement
-              </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Your contribution directly funds health screenings, mental wellness sessions, and entrepreneurship grants
-                for young people across Kenya. Every shilling makes a difference.
-              </p>
-            </div>
+            <h2 className="text-4xl md:text-5xl font-bold">
+              Your donation creates lasting change
+            </h2>
+            <p className="text-xl text-primary-foreground/80">
+              Every shilling directly funds health screenings, mental wellness sessions, 
+              and entrepreneurship grants for young people across Kenya.
+            </p>
 
-            {/* Impact Statement */}
-            <div className="bg-card border border-border rounded-3xl p-6 shadow-lg">
-              <h3 className="font-bold text-lg text-foreground mb-4">Your Impact</h3>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-6 h-6 bg-primary/20 text-primary rounded-full flex items-center justify-center text-sm font-bold">✓</span>
-                  <span className="text-muted-foreground"><strong className="text-foreground">KES 500</strong> provides mental health resources for 5 youth</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-6 h-6 bg-primary/20 text-primary rounded-full flex items-center justify-center text-sm font-bold">✓</span>
-                  <span className="text-muted-foreground"><strong className="text-foreground">KES 2,500</strong> covers health screenings for 10 people</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-6 h-6 bg-primary/20 text-primary rounded-full flex items-center justify-center text-sm font-bold">✓</span>
-                  <span className="text-muted-foreground"><strong className="text-foreground">KES 5,000</strong> funds a microgrant for an aspiring entrepreneur</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Payment Methods */}
-            <div className="space-y-4">
-              <h3 className="font-bold text-lg text-foreground">Payment Options</h3>
-              <div className="space-y-3">
-                {paymentMethods.map((method, index) => {
-                  const Icon = method.icon;
-                  return (
-                    <motion.div
-                      key={method.name}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
-                      className="flex items-start gap-4 p-4 bg-card border border-border rounded-2xl"
-                    >
-                      <div className={`${method.bg} p-3 rounded-xl`}>
-                        <Icon className={method.color} size={24} />
-                      </div>
-                      <div>
-                        <div className="font-semibold text-foreground">{method.name}</div>
-                        <div className="text-sm text-muted-foreground">{method.description}</div>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
+            {/* Impact List */}
+            <div className="space-y-4 pt-4">
+              {impactItems.map((item) => (
+                <div key={item.amount} className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-secondary rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="text-secondary-foreground" size={14} />
+                  </div>
+                  <span className="text-primary-foreground/90">
+                    <strong className="text-primary-foreground">KES {item.amount.toLocaleString()}</strong> provides {item.impact}
+                  </span>
+                </div>
+              ))}
             </div>
           </motion.div>
 
-          {/* Right Form */}
+          {/* Right - Donation Card */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-card border border-border rounded-3xl p-8 shadow-2xl"
+            className="bg-background text-foreground rounded-2xl p-8 shadow-2xl"
           >
-            <h3 className="text-2xl font-bold text-foreground mb-6">Make a Donation</h3>
+            <h3 className="text-2xl font-bold mb-6">Make a Donation</h3>
 
-            <form className="space-y-5">
-              <div>
-                <label className="block text-sm font-semibold text-foreground mb-2">Full Name</label>
-                <Input placeholder="Enter your name" className="h-12" />
-              </div>
+            {/* Amount Selection */}
+            <div className="grid grid-cols-2 gap-3 mb-6">
+              {amounts.map((amount) => (
+                <button
+                  key={amount}
+                  onClick={() => setSelectedAmount(amount)}
+                  className={`py-4 rounded-xl font-bold text-lg transition-all ${
+                    selectedAmount === amount
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-muted text-foreground hover:bg-muted/80"
+                  }`}
+                >
+                  KES {amount.toLocaleString()}
+                </button>
+              ))}
+            </div>
 
-              <div>
-                <label className="block text-sm font-semibold text-foreground mb-2">Email Address</label>
-                <Input type="email" placeholder="your@email.com" className="h-12" />
-              </div>
+            {/* Custom Amount */}
+            <div className="mb-6">
+              <label className="block text-sm font-medium text-muted-foreground mb-2">
+                Or enter custom amount (KES)
+              </label>
+              <input
+                type="number"
+                placeholder="Enter amount"
+                className="w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
+                onChange={(e) => setSelectedAmount(Number(e.target.value))}
+              />
+            </div>
 
-              <div>
-                <label className="block text-sm font-semibold text-foreground mb-2">Donation Amount</label>
-                <div className="grid grid-cols-2 gap-3 mb-3">
-                  {amounts.map((amount) => (
-                    <button
-                      key={amount}
-                      type="button"
-                      className="h-12 border-2 border-border rounded-xl font-semibold hover:border-primary hover:bg-primary/5 transition-all"
-                    >
-                      {amount}
-                    </button>
-                  ))}
-                </div>
-                <Input type="number" placeholder="Or enter custom amount" className="h-12" />
-              </div>
+            {/* Donate Button */}
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="w-full bg-secondary text-secondary-foreground py-4 rounded-xl font-bold text-lg hover:bg-secondary-light transition-colors"
+            >
+              Donate{selectedAmount ? ` KES ${selectedAmount.toLocaleString()}` : ""}
+            </button>
 
-              <div>
-                <label className="block text-sm font-semibold text-foreground mb-2">Payment Method</label>
-                <select className="w-full h-12 px-4 border border-input rounded-xl bg-background focus:outline-none focus:ring-2 focus:ring-ring">
-                  <option>M-Pesa</option>
-                  <option>Credit/Debit Card (Stripe)</option>
-                  <option>PayPal</option>
-                </select>
-              </div>
-
-              <Button
-                onClick={() => setIsModalOpen(true)}
-                className="w-full h-12 bg-primary hover:bg-primary-light text-primary-foreground font-bold text-lg shadow-lg hover:shadow-glow transition-all"
-              >
-                Donate Now
-              </Button>
-
-              <p className="text-xs text-muted-foreground text-center pt-2">
-                🔒 Secure payment processing. You'll receive a receipt and impact report via email.
-              </p>
-            </form>
+            <p className="text-center text-sm text-muted-foreground mt-4">
+              Secure payment • Tax receipt provided
+            </p>
           </motion.div>
         </div>
       </div>

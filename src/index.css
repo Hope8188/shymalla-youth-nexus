@@ -2,112 +2,100 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Modern minimalist design system inspired by charity: water, UNICEF, The Water Project */
 
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 220 15% 15%;
+    --foreground: 0 0% 8%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 15% 15%;
+    --card-foreground: 0 0% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 15% 15%;
+    --popover-foreground: 0 0% 8%;
 
-    /* Vibrant teal for health & growth */
-    --primary: 173 80% 40%;
+    /* Deep blue - trust, stability */
+    --primary: 210 100% 35%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 173 75% 50%;
-    --primary-glow: 173 70% 60%;
+    --primary-light: 210 90% 45%;
+    --primary-glow: 210 85% 55%;
 
-    /* Energetic cyan for trust */
-    --secondary: 189 94% 43%;
-    --secondary-foreground: 0 0% 100%;
-    --secondary-light: 189 90% 53%;
+    /* Warm gold - hope, energy */
+    --secondary: 42 95% 55%;
+    --secondary-foreground: 0 0% 8%;
+    --secondary-light: 42 90% 65%;
 
-    /* Bold orange for hope & energy */
-    --accent: 27 96% 61%;
+    /* Coral accent - urgency, action */
+    --accent: 12 85% 55%;
     --accent-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 220 9% 46%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 210 10% 45%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 173 80% 40%;
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 210 100% 35%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(173 80% 40%), hsl(189 94% 43%));
-    --gradient-sunrise: linear-gradient(120deg, hsl(27 96% 61%), hsl(30 100% 60%));
-    --gradient-health: linear-gradient(135deg, hsl(173 75% 50%), hsl(189 90% 53%));
-    --gradient-overlay: linear-gradient(180deg, transparent, hsl(0 0% 0% / 0.6));
+    --gradient-hero: linear-gradient(135deg, hsl(210 100% 35%), hsl(210 85% 55%));
+    --gradient-warm: linear-gradient(135deg, hsl(42 95% 55%), hsl(12 85% 55%));
+    --gradient-overlay: linear-gradient(180deg, transparent 0%, hsl(0 0% 0% / 0.7) 100%);
 
     /* Shadows */
-    --shadow-sm: 0 1px 3px 0 hsl(0 0% 0% / 0.1);
-    --shadow-md: 0 4px 12px -2px hsl(0 0% 0% / 0.12);
-    --shadow-lg: 0 10px 30px -5px hsl(0 0% 0% / 0.15);
-    --shadow-glow: 0 0 20px hsl(173 80% 40% / 0.3);
-    
-    /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-spring: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.1);
+    --shadow-xl: 0 20px 25px -5px hsl(0 0% 0% / 0.1);
+    --shadow-glow: 0 0 40px hsl(210 100% 35% / 0.2);
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 220 26% 14%;
+    --background: 210 25% 8%;
     --foreground: 0 0% 98%;
 
-    --card: 220 24% 18%;
+    --card: 210 25% 12%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 220 24% 18%;
+    --popover: 210 25% 12%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 173 75% 50%;
+    --primary: 210 90% 55%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 173 70% 60%;
-    --primary-glow: 173 65% 70%;
+    --primary-light: 210 85% 65%;
+    --primary-glow: 210 80% 70%;
 
-    --secondary: 189 90% 53%;
-    --secondary-foreground: 0 0% 100%;
-    --secondary-light: 189 85% 63%;
+    --secondary: 42 90% 60%;
+    --secondary-foreground: 0 0% 8%;
+    --secondary-light: 42 85% 70%;
 
-    --accent: 27 96% 61%;
+    --accent: 12 80% 60%;
     --accent-foreground: 0 0% 100%;
 
-    --muted: 220 20% 22%;
-    --muted-foreground: 220 9% 65%;
+    --muted: 210 20% 18%;
+    --muted-foreground: 210 10% 60%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 20% 25%;
-    --input: 220 20% 25%;
-    --ring: 173 75% 50%;
+    --border: 210 20% 20%;
+    --input: 210 20% 20%;
+    --ring: 210 90% 55%;
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -125,6 +113,55 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "ss02", "cv01";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+
+  .container-tight {
+    @apply max-w-5xl mx-auto px-6 md:px-8;
+  }
+
+  .container-wide {
+    @apply max-w-7xl mx-auto px-6 md:px-8;
+  }
+
+  .text-display {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
+  }
+
+  .text-headline {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold leading-tight;
+  }
+
+  .text-body-lg {
+    @apply text-lg md:text-xl text-muted-foreground leading-relaxed;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary-light 
+           px-8 py-4 rounded-full font-semibold text-base
+           transition-all duration-300 hover:shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary-light 
+           px-8 py-4 rounded-full font-semibold text-base
+           transition-all duration-300 hover:shadow-lg;
+  }
+
+  .btn-outline {
+    @apply border-2 border-foreground text-foreground hover:bg-foreground hover:text-background
+           px-8 py-4 rounded-full font-semibold text-base
+           transition-all duration-300;
   }
 }

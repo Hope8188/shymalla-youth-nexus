@@ -1,107 +1,118 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { Quote } from "lucide-react";
 import gracePhoto from "@/assets/story-grace.jpg";
 import davidPhoto from "@/assets/story-david.jpg";
 import faithPhoto from "@/assets/story-faith.jpg";
 
-const SuccessStories = () => {
-const stories = [
+export default function SuccessStories() {
+  const stories = [
     {
       name: "Grace Wanjiku",
       age: 22,
       location: "Nairobi",
       photo: gracePhoto,
-      quote: "The entrepreneurship bootcamp gave me the skills and confidence to start my own salon. Now I employ three other young people from my community.",
-      before: "Unemployed",
-      after: "Business Owner",
-      metric: "3 jobs created",
+      quote:
+        "The entrepreneurship bootcamp gave me the skills and confidence to start my own salon. Now I employ three other young people from my community.",
+      program: "Entrepreneurship",
     },
     {
       name: "David Omondi",
       age: 19,
       location: "Kisumu",
       photo: davidPhoto,
-      quote: "Mental wellness sessions helped me overcome anxiety and depression. I learned I wasn't alone and found peer support that changed my life.",
-      before: "Struggling with anxiety",
-      after: "Peer counselor",
-      metric: "20+ youth supported",
+      quote:
+        "Mental wellness sessions helped me overcome anxiety. I learned I wasn't alone and found peer support that changed my life.",
+      program: "Mental Wellness",
     },
     {
       name: "Faith Akinyi",
       age: 24,
       location: "Mombasa",
       photo: faithPhoto,
-      quote: "Free health screenings caught my condition early. The referral system connected me to treatment I couldn't afford. I'm healthy and working today.",
-      before: "Undiagnosed condition",
-      after: "Healthy & employed",
-      metric: "Early intervention",
+      quote:
+        "Free health screenings caught my condition early. The referral system connected me to treatment I couldn't afford. I'm healthy today.",
+      program: "Health Awareness",
     },
   ];
 
   return (
-    <section className="max-w-6xl mx-auto px-6 py-12">
-      <div className="text-center mb-8">
-        <h2 className="text-3xl font-extrabold text-foreground">Real Stories, Real Change</h2>
-        <p className="mt-2 text-muted-foreground">
-          Meet the youth whose lives were transformed through our programs
-        </p>
-      </div>
+    <section id="stories" className="section-padding bg-background">
+      <div className="container-wide">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <span className="text-primary font-semibold text-sm uppercase tracking-widest">
+            Success Stories
+          </span>
+          <h2 className="text-headline text-foreground mt-4 mb-4">
+            Lives Transformed
+          </h2>
+          <p className="text-body-lg max-w-2xl mx-auto">
+            Real stories from young people whose lives have been changed through our programs.
+          </p>
+        </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {stories.map((story, index) => (
-          <motion.div
-            key={story.name}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.15 }}
-            viewport={{ once: true }}
-            className="bg-gradient-to-br from-card to-muted/20 border border-border rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow"
-          >
-            <div className="flex items-center gap-4 mb-4">
-              <div className="w-16 h-16 rounded-full bg-primary/10 border-2 border-primary/20 flex items-center justify-center overflow-hidden">
+        {/* Stories Grid */}
+        <div className="grid md:grid-cols-3 gap-8">
+          {stories.map((story, index) => (
+            <motion.div
+              key={story.name}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.15 }}
+              className="bg-muted/50 rounded-2xl p-8 relative"
+            >
+              {/* Quote Icon */}
+              <Quote className="text-primary/20 absolute top-6 right-6" size={48} />
+
+              {/* Photo */}
+              <div className="w-20 h-20 rounded-full overflow-hidden mb-6 border-4 border-background shadow-lg">
                 <img
                   src={story.photo}
                   alt={story.name}
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div>
+
+              {/* Quote */}
+              <blockquote className="text-foreground text-lg mb-6 leading-relaxed">
+                "{story.quote}"
+              </blockquote>
+
+              {/* Attribution */}
+              <div className="border-t border-border pt-4">
                 <div className="font-bold text-foreground">{story.name}</div>
                 <div className="text-sm text-muted-foreground">
-                  {story.age} • {story.location}
+                  {story.age} years old • {story.location}
+                </div>
+                <div className="text-sm text-primary font-medium mt-1">
+                  {story.program} Program
                 </div>
               </div>
-            </div>
+            </motion.div>
+          ))}
+        </div>
 
-            <blockquote className="text-sm text-foreground/90 italic mb-4 leading-relaxed">
-              "{story.quote}"
-            </blockquote>
-
-            <div className="bg-background/50 rounded-lg p-3 border border-border/50">
-              <div className="flex items-center justify-between text-xs">
-                <div className="text-muted-foreground">{story.before}</div>
-                <ArrowRight className="w-4 h-4 text-primary" />
-                <div className="text-primary font-semibold">{story.after}</div>
-              </div>
-              <div className="mt-2 text-center text-xs font-semibold text-accent-foreground bg-accent/20 rounded px-2 py-1">
-                {story.metric}
-              </div>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-
-      <div className="text-center mt-8">
-        <a
-          href="#blog"
-          className="inline-flex items-center gap-2 text-primary font-semibold hover:underline"
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center mt-12"
         >
-          Read More Success Stories
-          <ArrowRight className="w-4 h-4" />
-        </a>
+          <a
+            href="#donate"
+            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full font-semibold hover:bg-primary-light transition-all"
+          >
+            Help create more success stories
+          </a>
+        </motion.div>
       </div>
     </section>
   );
-};
-
-export default SuccessStories;
+}

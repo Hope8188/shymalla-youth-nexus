@@ -1,60 +1,78 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
     { href: "#about", label: "About" },
-    { href: "#impact", label: "Impact" },
     { href: "#programs", label: "Programs" },
-    { href: "#events", label: "Events" },
-    { href: "#blog", label: "Blog" },
+    { href: "#impact", label: "Impact" },
+    { href: "#stories", label: "Stories" },
     { href: "#contact", label: "Contact" },
   ];
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border shadow-sm">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex items-center justify-between py-4">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-background/95 backdrop-blur-md shadow-sm"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="container-wide">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#hero" className="flex items-center gap-3 group">
-            <div className="relative w-12 h-12 rounded-xl overflow-hidden shadow-lg group-hover:shadow-glow transition-all duration-300">
-              <div className="absolute inset-0 bg-gradient-hero animate-pulse"></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
+          <a href="#" className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+              <span className="text-primary-foreground font-bold text-lg">B</span>
             </div>
-            <div className="hidden sm:block">
-              <div className="font-extrabold text-xl text-foreground">Betterment Shymalla</div>
-              <div className="text-xs text-muted-foreground -mt-0.5">Youth • Health • Entrepreneurship</div>
-            </div>
+            <span
+              className={`font-bold text-lg hidden sm:block transition-colors ${
+                scrolled ? "text-foreground" : "text-white"
+              }`}
+            >
+              Betterment Shymalla
+            </span>
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
+                className={`text-sm font-medium transition-colors hover:opacity-70 ${
+                  scrolled ? "text-foreground" : "text-white"
+                }`}
               >
                 {link.label}
               </a>
             ))}
-            <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold shadow-md">
-              <a href="#donate">Donate</a>
-            </Button>
+            <a
+              href="#donate"
+              className="bg-secondary text-secondary-foreground px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-secondary-light transition-colors"
+            >
+              Donate
+            </a>
           </nav>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-muted transition-colors"
+            className={`lg:hidden p-2 rounded-lg transition-colors ${
+              scrolled ? "text-foreground" : "text-white"
+            }`}
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -66,25 +84,29 @@ export default function Header() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden border-t border-border bg-background/95 backdrop-blur-md"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="lg:hidden bg-background border-b border-border"
           >
-            <nav className="container mx-auto px-4 py-4 flex flex-col gap-3">
+            <nav className="container-wide py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="py-2 px-4 rounded-lg hover:bg-muted transition-colors font-medium"
+                  className="text-foreground font-medium py-2"
                 >
                   {link.label}
                 </a>
               ))}
-              <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold w-full">
-                <a href="#donate" onClick={() => setMobileMenuOpen(false)}>Donate</a>
-              </Button>
+              <a
+                href="#donate"
+                onClick={() => setMobileMenuOpen(false)}
+                className="bg-secondary text-secondary-foreground px-6 py-3 rounded-full text-center font-semibold mt-2"
+              >
+                Donate
+              </a>
             </nav>
           </motion.div>
         )}
