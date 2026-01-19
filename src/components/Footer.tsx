@@ -1,94 +1,89 @@
-import { Instagram, Linkedin, Twitter } from "lucide-react";
+import { Heart, Instagram, Twitter, Facebook, Linkedin, ArrowUpRight } from "lucide-react";
 
 export default function Footer() {
   const links = {
     Organization: [
       { label: "About Us", href: "#about" },
-      { label: "Programs", href: "#programs" },
-      { label: "Impact", href: "#stats" },
-      { label: "Stories", href: "#stories" },
+      { label: "Our Programs", href: "#programs" },
+      { label: "Success Stories", href: "#stories" },
+      { label: "Contact", href: "#contact" },
     ],
     "Get Involved": [
       { label: "Donate", href: "#donate" },
       { label: "Volunteer", href: "#contact" },
-      { label: "Partner", href: "#contact" },
+      { label: "Partner With Us", href: "#contact" },
       { label: "Careers", href: "#contact" },
     ],
     Resources: [
       { label: "Annual Reports", href: "#" },
       { label: "Press Kit", href: "#" },
+      { label: "FAQs", href: "#" },
       { label: "Privacy Policy", href: "#" },
-      { label: "Terms of Service", href: "#" },
     ],
   };
 
   const socialLinks = [
     { icon: Instagram, label: "Instagram", href: "#" },
     { icon: Twitter, label: "Twitter", href: "#" },
+    { icon: Facebook, label: "Facebook", href: "#" },
     { icon: Linkedin, label: "LinkedIn", href: "#" },
   ];
 
   return (
-    <footer className="bg-foreground text-background">
-      <div className="container-wide section-padding">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
-          {/* Brand */}
-          <div className="lg:col-span-2 space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">B</span>
+    <footer className="bg-foreground text-background relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-96 h-96 rounded-full bg-primary/10 blur-3xl -translate-x-1/2 -translate-y-1/2" />
+      
+      <div className="container-wide py-20 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+          <div className="lg:col-span-4 space-y-6">
+            <a href="#" className="inline-flex items-center gap-3 group">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primary-light flex items-center justify-center">
+                <Heart className="text-primary-foreground" size={22} />
               </div>
-              <span className="font-bold text-xl">Betterment Shymalla</span>
-            </div>
-            <p className="text-background/70 max-w-sm">
-              Empowering Kenyan youth through health awareness, mental wellness, 
-              and entrepreneurship programs. Led by youth, for youth.
+              <span className="text-2xl font-bold text-background">Betterment Shymalla</span>
+            </a>
+            <p className="text-background/60 leading-relaxed max-w-sm">
+              A youth-led movement empowering young Kenyans through health, wellness, 
+              and entrepreneurship programs.
             </p>
-            <div className="flex gap-4">
-              {socialLinks.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    aria-label={social.label}
-                    className="w-10 h-10 bg-background/10 rounded-full flex items-center justify-center hover:bg-background/20 transition-colors"
-                  >
-                    <Icon size={18} />
-                  </a>
-                );
-              })}
+            <div className="flex gap-3 pt-4">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  aria-label={social.label}
+                  className="w-11 h-11 rounded-xl bg-background/10 flex items-center justify-center hover:bg-primary transition-all"
+                >
+                  <social.icon size={18} />
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Links */}
-          {Object.entries(links).map(([title, items]) => (
-            <div key={title}>
-              <h3 className="font-semibold mb-4">{title}</h3>
-              <ul className="space-y-3">
-                {items.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="text-background/70 hover:text-background transition-colors"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+          <div className="lg:col-span-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-12">
+              {Object.entries(links).map(([category, items]) => (
+                <div key={category}>
+                  <h3 className="font-bold text-background mb-6 text-sm uppercase tracking-wider">{category}</h3>
+                  <ul className="space-y-4">
+                    {items.map((link) => (
+                      <li key={link.label}>
+                        <a href={link.href} className="text-background/60 hover:text-background transition-colors flex items-center gap-1 group">
+                          {link.label}
+                          <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
 
-        {/* Bottom */}
-        <div className="pt-8 border-t border-background/20 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-background/60 text-sm">
-            © {new Date().getFullYear()} Betterment Shymalla Movement. All rights reserved.
-          </p>
-          <p className="text-background/60 text-sm italic">
-            Always In My Prime
-          </p>
+        <div className="mt-16 pt-8 border-t border-background/10 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-background/50 text-sm">© {new Date().getFullYear()} Betterment Shymalla Movement. All rights reserved.</p>
+          <p className="text-background/50 text-sm flex items-center gap-2">Made with <Heart size={14} className="text-accent" /> in Kenya</p>
         </div>
       </div>
     </footer>
