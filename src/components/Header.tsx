@@ -29,28 +29,27 @@ export default function Header() {
       }`}
     >
       <div className="container-wide">
-        <nav className="flex items-center justify-between h-20 md:h-24">
-          <a href="#" className={`flex items-center gap-3 group transition-colors ${scrolled ? "text-foreground" : "text-white"}`}>
-            <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${scrolled ? "bg-primary" : "bg-white/20 backdrop-blur-sm"}`}>
-              <Heart size={20} className={scrolled ? "text-primary-foreground" : "text-white"} />
+        <nav className="flex items-center justify-between h-16 md:h-18">
+          <a href="#" className={`flex items-center gap-2 group transition-colors ${scrolled ? "text-foreground" : "text-white"}`}>
+            <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all ${scrolled ? "bg-primary" : "bg-white/20"}`}>
+              <Heart size={16} className={scrolled ? "text-primary-foreground" : "text-white"} />
             </div>
-            <span className="font-bold text-lg hidden sm:block">Betterment Shymalla</span>
+            <span className="font-bold text-sm hidden sm:block">Betterment Shymalla</span>
           </a>
 
-          <div className="hidden md:flex items-center gap-10">
+          <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a key={link.href} href={link.href} className={`relative font-medium transition-colors py-2 group ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/80 hover:text-white"}`}>
+              <a key={link.href} href={link.href} className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/80 hover:text-white"}`}>
                 {link.label}
-                <span className={`absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${scrolled ? "bg-primary" : "bg-white"}`} />
               </a>
             ))}
-            <a href="#donate" className={`px-6 py-3 rounded-full font-semibold transition-all ${scrolled ? "bg-primary text-primary-foreground hover:bg-primary-light" : "bg-white text-foreground hover:bg-white/90"}`}>
+            <a href="#donate" className={`px-5 py-2.5 rounded-lg font-semibold text-sm transition-all ${scrolled ? "bg-primary text-primary-foreground hover:bg-primary-light" : "bg-white text-foreground hover:bg-white/90"}`}>
               Donate
             </a>
           </div>
 
-          <button onClick={() => setIsOpen(!isOpen)} className={`md:hidden w-11 h-11 rounded-xl flex items-center justify-center ${scrolled ? "text-foreground bg-muted" : "text-white bg-white/20"}`}>
-            {isOpen ? <X size={22} /> : <Menu size={22} />}
+          <button onClick={() => setIsOpen(!isOpen)} className={`md:hidden w-10 h-10 rounded-lg flex items-center justify-center ${scrolled ? "text-foreground bg-muted" : "text-white bg-white/20"}`}>
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </nav>
       </div>
