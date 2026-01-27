@@ -114,8 +114,8 @@ export default function Donate() {
               {/* Donate Button */}
               <motion.button
                 onClick={() => setIsModalOpen(true)}
-                className="w-full bg-gradient-to-r from-accent to-accent/90 text-accent-foreground py-4 rounded-xl font-semibold shadow-lg shadow-accent/30"
-                whileHover={{ scale: 1.01, y: -1 }}
+                className="w-full bg-accent text-accent-foreground py-4 rounded-xl font-semibold"
+                whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
               >
                 Donate{selectedAmount ? ` KES ${selectedAmount.toLocaleString()}` : ""}

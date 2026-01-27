@@ -138,8 +138,8 @@ export default function Contact() {
                 </div>
                 <motion.button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-primary to-primary-light text-primary-foreground py-3.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 shadow-md shadow-primary/20"
-                  whileHover={{ scale: 1.01, y: -1 }}
+                  className="w-full bg-primary text-primary-foreground py-3.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 hover:bg-primary-light transition-colors"
+                  whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
                 >
                   Send Message
