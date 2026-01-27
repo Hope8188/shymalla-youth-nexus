@@ -103,8 +103,8 @@ export default function SuccessStories() {
         >
           <motion.a
             href="#donate"
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-primary-light text-primary-foreground px-7 py-3.5 rounded-xl font-semibold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all"
-            whileHover={{ scale: 1.02, y: -2 }}
+            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3.5 rounded-xl font-semibold hover:bg-primary-light transition-all"
+            whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
             Help create more success stories
