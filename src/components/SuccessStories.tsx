@@ -36,7 +36,7 @@ export default function SuccessStories() {
   ];
 
   return (
-    <section id="stories" className="section-padding bg-muted/50">
+    <section id="stories" className="py-16 md:py-20 bg-muted/30">
       <div className="container-wide">
         {/* Header */}
         <motion.div
@@ -45,17 +45,17 @@ export default function SuccessStories() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="text-primary font-semibold text-xs uppercase tracking-widest mb-3 block">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary font-semibold text-xs uppercase tracking-widest mb-4">
             Success Stories
           </span>
-          <h2 className="text-headline text-foreground mb-4">Lives Transformed</h2>
-          <p className="text-body-lg max-w-xl mx-auto">
+          <h2 className="text-headline text-foreground mb-3">Lives Transformed</h2>
+          <p className="text-body-lg max-w-lg mx-auto">
             Real stories from young people changed by our programs.
           </p>
         </motion.div>
 
         {/* Stories Grid */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-5">
           {stories.map((story, index) => (
             <motion.div
               key={story.name}
@@ -64,15 +64,15 @@ export default function SuccessStories() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
             >
-              <div className="bg-card rounded-xl p-6 border border-border h-full flex flex-col">
-                <Quote className="text-primary/30 mb-4" size={24} />
+              <div className="bg-card rounded-2xl p-6 border border-border/80 h-full flex flex-col hover:border-primary/30 hover:shadow-lg transition-all duration-300 group">
+                <Quote className="text-primary/20 mb-4 group-hover:text-primary/40 transition-colors" size={28} />
                 
-                <blockquote className="text-foreground leading-relaxed flex-grow mb-5">
+                <blockquote className="text-foreground leading-relaxed flex-grow mb-5 italic">
                   "{story.quote}"
                 </blockquote>
 
                 <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 rounded-full overflow-hidden">
+                  <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-primary/20">
                     <img
                       src={story.photo}
                       alt={story.name}
@@ -85,7 +85,7 @@ export default function SuccessStories() {
                       {story.age} • {story.location}
                     </div>
                   </div>
-                  <span className="ml-auto px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
+                  <span className="ml-auto px-3 py-1.5 rounded-full bg-gradient-to-r from-primary/10 to-primary/5 text-primary text-xs font-semibold">
                     {story.program}
                   </span>
                 </div>
@@ -103,8 +103,8 @@ export default function SuccessStories() {
         >
           <motion.a
             href="#donate"
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary-light transition-colors"
-            whileHover={{ scale: 1.02 }}
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-primary-light text-primary-foreground px-7 py-3.5 rounded-xl font-semibold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all"
+            whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
           >
             Help create more success stories

@@ -3,19 +3,19 @@ import { ArrowRight, Sparkles, Target } from "lucide-react";
 
 export default function About() {
   return (
-    <section id="about" className="section-padding bg-background">
+    <section id="about" className="py-16 md:py-20 bg-background">
       <div className="container-tight">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="space-y-6"
+            className="space-y-5"
           >
             <div>
-              <span className="text-primary font-semibold text-xs uppercase tracking-widest mb-3 block">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary font-semibold text-xs uppercase tracking-widest mb-4">
                 About Us
               </span>
               <h2 className="text-headline text-foreground">
@@ -23,7 +23,7 @@ export default function About() {
               </h2>
             </div>
             
-            <div className="space-y-4 text-body-lg">
+            <div className="space-y-3 text-muted-foreground leading-relaxed">
               <p>
                 The Betterment Shymalla Movement is a youth-led Kenyan organization 
                 transforming how young people access health, wellness, and economic opportunities.
@@ -36,11 +36,11 @@ export default function About() {
             
             <motion.a
               href="#programs"
-              className="inline-flex items-center gap-2 text-primary font-semibold text-sm"
+              className="inline-flex items-center gap-2 text-primary font-semibold text-sm group"
               whileHover={{ x: 3 }}
             >
               Explore our programs
-              <ArrowRight size={16} />
+              <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
             </motion.a>
           </motion.div>
 
@@ -53,9 +53,9 @@ export default function About() {
             className="space-y-4"
           >
             {/* Vision Card */}
-            <div className="bg-primary text-primary-foreground p-6 rounded-xl">
+            <div className="bg-gradient-to-br from-primary to-primary-light text-primary-foreground p-6 rounded-2xl shadow-lg shadow-primary/20">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-9 h-9 rounded-lg bg-white/20 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
                   <Sparkles size={18} />
                 </div>
                 <h3 className="text-xl font-bold">Our Vision</h3>
@@ -67,9 +67,9 @@ export default function About() {
             </div>
             
             {/* Mission Card */}
-            <div className="bg-card border border-border p-6 rounded-xl">
+            <div className="bg-card border border-border/80 p-6 rounded-2xl hover:border-primary/30 hover:shadow-md transition-all duration-300">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center">
                   <Target size={18} className="text-primary" />
                 </div>
                 <h3 className="text-xl font-bold text-foreground">Our Mission</h3>

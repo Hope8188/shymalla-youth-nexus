@@ -43,15 +43,15 @@ function StatItem({ value, suffix, label, icon: Icon, delay }: StatItemProps) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: 0.5 }}
       viewport={{ once: true }}
-      className="text-center"
+      className="text-center group"
     >
-      <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center">
-        <Icon className="text-primary" size={22} />
+      <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center group-hover:from-primary/20 group-hover:to-primary/10 transition-all duration-300">
+        <Icon className="text-primary" size={24} />
       </div>
-      <div className="text-4xl md:text-5xl font-bold text-foreground mb-2 font-sans tabular-nums">
+      <div className="text-4xl md:text-5xl font-bold text-foreground mb-1 font-sans tabular-nums tracking-tight">
         {count.toLocaleString()}{suffix}
       </div>
-      <div className="text-muted-foreground text-sm">{label}</div>
+      <div className="text-muted-foreground text-sm font-medium">{label}</div>
     </motion.div>
   );
 }
@@ -65,26 +65,32 @@ export default function Stats() {
   ];
 
   return (
-    <section id="stats" className="section-padding bg-muted/50">
-      <div className="container-wide">
+    <section id="stats" className="py-16 md:py-20 bg-gradient-to-b from-muted/30 to-background relative overflow-hidden">
+      {/* Subtle decorative elements */}
+      <div className="absolute inset-0 opacity-[0.03]">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent rounded-full blur-3xl" />
+      </div>
+      
+      <div className="container-wide relative">
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-14"
         >
-          <span className="text-primary font-semibold text-xs uppercase tracking-widest mb-3 block">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary font-semibold text-xs uppercase tracking-widest mb-4">
             Our Impact
           </span>
-          <h2 className="text-headline text-foreground mb-4">
+          <h2 className="text-headline text-foreground mb-3">
             Real change, measurable results
           </h2>
-          <p className="text-body-lg max-w-xl mx-auto">
-            Every number represents a life transformed and a community strengthened.
+          <p className="text-body-lg max-w-lg mx-auto">
+            Every number represents a life transformed.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {stats.map((stat, index) => (
             <StatItem
               key={stat.label}

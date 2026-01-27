@@ -17,8 +17,14 @@ export default function Donate() {
   ];
 
   return (
-    <section id="donate" className="section-padding bg-primary text-primary-foreground">
-      <div className="container-tight">
+    <section id="donate" className="py-16 md:py-20 bg-gradient-to-br from-primary via-primary to-primary-light text-primary-foreground relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+      </div>
+      
+      <div className="container-tight relative">
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           {/* Left Content */}
           <motion.div
@@ -26,10 +32,10 @@ export default function Donate() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="space-y-6"
+            className="space-y-5"
           >
             <div>
-              <span className="text-accent font-semibold text-xs uppercase tracking-widest mb-3 block">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-accent/20 text-accent font-semibold text-xs uppercase tracking-widest mb-4">
                 Make an Impact
               </span>
               <h2 className="text-3xl md:text-4xl font-bold leading-tight">
@@ -37,7 +43,7 @@ export default function Donate() {
               </h2>
             </div>
             
-            <p className="text-primary-foreground/80 leading-relaxed">
+            <p className="text-primary-foreground/85 leading-relaxed">
               Every shilling directly funds health screenings, mental wellness sessions, 
               and entrepreneurship grants for young people across Kenya.
             </p>
@@ -53,8 +59,8 @@ export default function Donate() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.08 }}
                 >
-                  <div className="w-6 h-6 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
-                    <Check className="text-accent-foreground" size={12} />
+                  <div className="w-7 h-7 bg-accent rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-accent/30">
+                    <Check className="text-accent-foreground" size={14} />
                   </div>
                   <span className="text-primary-foreground/90 text-sm">
                     <strong className="text-primary-foreground">KES {item.amount.toLocaleString()}</strong>{" "}
@@ -72,7 +78,7 @@ export default function Donate() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <div className="bg-background text-foreground rounded-xl p-6 shadow-lg">
+            <div className="bg-background text-foreground rounded-2xl p-6 shadow-2xl">
               <h3 className="text-lg font-bold mb-5">Make a Donation</h3>
 
               {/* Amount Selection */}
@@ -81,9 +87,9 @@ export default function Donate() {
                   <button
                     key={amount}
                     onClick={() => setSelectedAmount(amount)}
-                    className={`py-3 rounded-lg font-semibold text-sm transition-all ${
+                    className={`py-3.5 rounded-xl font-semibold text-sm transition-all ${
                       selectedAmount === amount
-                        ? "bg-primary text-primary-foreground"
+                        ? "bg-gradient-to-r from-primary to-primary-light text-primary-foreground shadow-md"
                         : "bg-muted text-foreground hover:bg-muted/80"
                     }`}
                   >
@@ -100,7 +106,7 @@ export default function Donate() {
                 <input
                   type="number"
                   placeholder="Enter amount"
-                  className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm bg-muted/30"
+                  className="w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary text-sm bg-muted/30"
                   onChange={(e) => setSelectedAmount(Number(e.target.value))}
                 />
               </div>
@@ -108,15 +114,15 @@ export default function Donate() {
               {/* Donate Button */}
               <motion.button
                 onClick={() => setIsModalOpen(true)}
-                className="w-full bg-accent text-accent-foreground py-3.5 rounded-lg font-semibold"
-                whileHover={{ scale: 1.01 }}
+                className="w-full bg-gradient-to-r from-accent to-accent/90 text-accent-foreground py-4 rounded-xl font-semibold shadow-lg shadow-accent/30"
+                whileHover={{ scale: 1.01, y: -1 }}
                 whileTap={{ scale: 0.99 }}
               >
                 Donate{selectedAmount ? ` KES ${selectedAmount.toLocaleString()}` : ""}
               </motion.button>
 
               <div className="flex items-center justify-center gap-3 mt-4 text-xs text-muted-foreground">
-                <span className="flex items-center gap-1">
+                <span className="flex items-center gap-1.5">
                   <Shield size={12} />
                   Secure payment
                 </span>
