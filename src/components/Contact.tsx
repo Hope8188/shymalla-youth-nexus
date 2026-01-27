@@ -23,7 +23,7 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="section-padding bg-background">
+    <section id="contact" className="py-16 md:py-20 bg-background">
       <div className="container-tight">
         {/* Header */}
         <motion.div
@@ -32,26 +32,26 @@ export default function Contact() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="text-primary font-semibold text-xs uppercase tracking-widest mb-3 block">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary font-semibold text-xs uppercase tracking-widest mb-4">
             Get In Touch
           </span>
-          <h2 className="text-headline text-foreground mb-4">Let's Work Together</h2>
-          <p className="text-body-lg max-w-xl mx-auto">
+          <h2 className="text-headline text-foreground mb-3">Let's Work Together</h2>
+          <p className="text-body-lg max-w-lg mx-auto">
             Partner with us, volunteer, or reach out with questions.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-10">
+        <div className="grid lg:grid-cols-2 gap-8">
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="space-y-6"
+            className="space-y-5"
           >
             {/* Contact Methods */}
-            <div className="space-y-4">
+            <div className="space-y-3">
               {contactMethods.map((method, index) => (
                 <motion.div
                   key={method.label}
@@ -59,10 +59,10 @@ export default function Contact() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.08 }}
-                  className="flex items-center gap-4"
+                  className="flex items-center gap-4 p-3 rounded-xl hover:bg-muted/50 transition-colors group"
                 >
-                  <div className="w-11 h-11 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <method.icon className="text-primary" size={18} />
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary/15 to-primary/5 rounded-xl flex items-center justify-center group-hover:from-primary/20 group-hover:to-primary/10 transition-all">
+                    <method.icon className="text-primary" size={20} />
                   </div>
                   <div>
                     <div className="text-xs font-medium text-muted-foreground mb-0.5">{method.label}</div>
@@ -79,22 +79,22 @@ export default function Contact() {
             </div>
 
             {/* Collaboration */}
-            <div className="bg-muted/50 p-5 rounded-xl">
+            <div className="bg-gradient-to-br from-muted/50 to-muted/30 p-5 rounded-2xl border border-border/50">
               <h3 className="font-bold text-foreground mb-3 text-sm">Ways to Collaborate</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li className="flex items-center gap-2">
+              <ul className="space-y-2.5 text-sm text-muted-foreground">
+                <li className="flex items-center gap-2.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                   Corporate partnerships & sponsorships
                 </li>
-                <li className="flex items-center gap-2">
+                <li className="flex items-center gap-2.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                   Volunteer opportunities
                 </li>
-                <li className="flex items-center gap-2">
+                <li className="flex items-center gap-2.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                   Media & press inquiries
                 </li>
-                <li className="flex items-center gap-2">
+                <li className="flex items-center gap-2.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                   Healthcare partnerships
                 </li>
@@ -109,7 +109,7 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div className="bg-card p-6 rounded-xl border border-border">
+            <div className="bg-card p-6 rounded-2xl border border-border/80 shadow-lg">
               <h3 className="text-lg font-bold text-foreground mb-5">Send a Message</h3>
               <form className="space-y-4">
                 <div>
@@ -117,7 +117,7 @@ export default function Contact() {
                   <input
                     type="text"
                     placeholder="Your name"
-                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-muted/30 text-sm"
+                    className="w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-muted/30 text-sm transition-all"
                   />
                 </div>
                 <div>
@@ -125,7 +125,7 @@ export default function Contact() {
                   <input
                     type="email"
                     placeholder="your@email.com"
-                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-muted/30 text-sm"
+                    className="w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-muted/30 text-sm transition-all"
                   />
                 </div>
                 <div>
@@ -133,13 +133,13 @@ export default function Contact() {
                   <textarea
                     rows={4}
                     placeholder="How can we help?"
-                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-muted/30 resize-none text-sm"
+                    className="w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-muted/30 resize-none text-sm transition-all"
                   />
                 </div>
                 <motion.button
                   type="submit"
-                  className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold text-sm flex items-center justify-center gap-2 hover:bg-primary-light transition-colors"
-                  whileHover={{ scale: 1.01 }}
+                  className="w-full bg-gradient-to-r from-primary to-primary-light text-primary-foreground py-3.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 shadow-md shadow-primary/20"
+                  whileHover={{ scale: 1.01, y: -1 }}
                   whileTap={{ scale: 0.99 }}
                 >
                   Send Message

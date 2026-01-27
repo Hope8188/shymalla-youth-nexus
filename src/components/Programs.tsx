@@ -36,7 +36,7 @@ export default function Programs() {
   ];
 
   return (
-    <section id="programs" className="section-padding bg-background">
+    <section id="programs" className="py-16 md:py-20 bg-gradient-to-b from-background to-muted/20">
       <div className="container-wide">
         {/* Header */}
         <motion.div
@@ -45,17 +45,17 @@ export default function Programs() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="text-primary font-semibold text-xs uppercase tracking-widest mb-3 block">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary font-semibold text-xs uppercase tracking-widest mb-4">
             What We Do
           </span>
-          <h2 className="text-headline text-foreground mb-4">Our Programs</h2>
-          <p className="text-body-lg max-w-xl mx-auto">
-            Three pillars of support for the holistic needs of young people.
+          <h2 className="text-headline text-foreground mb-3">Our Programs</h2>
+          <p className="text-body-lg max-w-lg mx-auto">
+            Three pillars of support for young people.
           </p>
         </motion.div>
 
         {/* Programs Grid */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-5">
           {programs.map((program, index) => {
             const Icon = program.icon;
             return (
@@ -67,21 +67,21 @@ export default function Programs() {
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 className="group"
               >
-                <div className="bg-card rounded-xl overflow-hidden border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300">
+                <div className="bg-card rounded-2xl overflow-hidden border border-border/80 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
                   {/* Image */}
-                  <div className="relative h-48 overflow-hidden">
+                  <div className="relative h-52 overflow-hidden">
                     <img
                       src={program.image}
                       alt={program.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-secondary/80 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/40 to-transparent" />
                     <div className="absolute bottom-4 left-4">
-                      <div className="text-2xl font-bold text-white">{program.stats}</div>
-                      <div className="text-white/80 text-xs">{program.statsLabel}</div>
+                      <div className="text-2xl font-bold text-white tracking-tight">{program.stats}</div>
+                      <div className="text-white/70 text-xs font-medium">{program.statsLabel}</div>
                     </div>
-                    <div className="absolute bottom-4 right-4 w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                      <Icon className="text-primary-foreground" size={18} />
+                    <div className="absolute bottom-4 right-4 w-11 h-11 rounded-xl bg-gradient-to-br from-primary to-primary-light flex items-center justify-center shadow-lg">
+                      <Icon className="text-primary-foreground" size={20} />
                     </div>
                   </div>
 
@@ -93,10 +93,10 @@ export default function Programs() {
                     <p className="text-muted-foreground text-sm leading-relaxed mb-4">{program.description}</p>
                     <a
                       href="#contact"
-                      className="inline-flex items-center gap-1 text-primary font-medium text-sm"
+                      className="inline-flex items-center gap-1.5 text-primary font-semibold text-sm group/link"
                     >
                       Learn more
-                      <ArrowUpRight size={14} />
+                      <ArrowUpRight size={14} className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
                     </a>
                   </div>
                 </div>
