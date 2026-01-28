@@ -1,7 +1,24 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, ArrowUpRight } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Loader2 } from "lucide-react";
+import { useContactForm } from "@/hooks/useContactForm";
 
 export default function Contact() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const { submitContact, loading } = useContactForm();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const { success } = await submitContact(name, email, message);
+    if (success) {
+      setName("");
+      setEmail("");
+      setMessage("");
+    }
+  };
+
   const contactMethods = [
     {
       icon: Mail,
@@ -111,39 +128,49 @@ export default function Contact() {
           >
             <div className="bg-card p-6 rounded-2xl border border-border/80 shadow-lg">
               <h3 className="text-lg font-bold text-foreground mb-5">Send a Message</h3>
-              <form className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label className="block text-xs font-medium text-foreground mb-2">Name</label>
                   <input
                     type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     placeholder="Your name"
                     className="w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-muted/30 text-sm transition-all"
+                    required
                   />
                 </div>
                 <div>
                   <label className="block text-xs font-medium text-foreground mb-2">Email</label>
                   <input
                     type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="your@email.com"
                     className="w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-muted/30 text-sm transition-all"
+                    required
                   />
                 </div>
                 <div>
                   <label className="block text-xs font-medium text-foreground mb-2">Message</label>
                   <textarea
                     rows={4}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                     placeholder="How can we help?"
                     className="w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-muted/30 resize-none text-sm transition-all"
+                    required
                   />
                 </div>
                 <motion.button
                   type="submit"
-                  className="w-full bg-primary text-primary-foreground py-3.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 hover:bg-primary-light transition-colors"
+                  disabled={loading}
+                  className="w-full bg-primary text-primary-foreground py-3.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 hover:bg-primary-light transition-colors disabled:opacity-50"
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
                 >
-                  Send Message
-                  <Send size={14} />
+                  {loading ? <Loader2 size={14} className="animate-spin" /> : <Send size={14} />}
+                  {loading ? "Sending..." : "Send Message"}
                 </motion.button>
               </form>
             </div>
