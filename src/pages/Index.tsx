@@ -4,6 +4,7 @@ import Stats from "@/components/Stats";
 import About from "@/components/About";
 import Programs from "@/components/Programs";
 import SuccessStories from "@/components/SuccessStories";
+import VolunteerForm from "@/components/VolunteerForm";
 import Donate from "@/components/Donate";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -18,6 +19,7 @@ const Index = () => {
         <About />
         <Programs />
         <SuccessStories />
+        <VolunteerForm />
         <Donate />
         <Contact />
       </main>
